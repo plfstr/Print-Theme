@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<title>{block:SearchPage}{lang:Search results for SearchQuery} | {/block:SearchPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{Title}</title>
+{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
+<link rel="icon" href="{Favicon}"/>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
+<!--http://code.google.com/p/html5shiv/-->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Tumblr Theme Variables -->
+<meta name="color:Background" content="#cedae2"/>
+<meta name="color:Text" content="#555"/>
+<meta name="color:Link Color" content="#111"/>
+<meta name="color:Secondary Links" content="#71a75d"/>
+<meta name="if:Show Profile Pic" content="1"/>
+<meta name="if:Show Twitter Follow Button" content="0"/>
+<meta name="text:Google Analytics ID" content="0"/>
+
+<style type="text/css">
+/* Theme Styling Structure */
+/*
+1. Resets
+2. General Styles
+3. Posts
+4. Post Type Specific
+5. Aside Styling [secondary column]
+6. Footer
+7. CMYK Print Color Blocks
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, small, strike, strong, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+:focus {
+	outline: 0;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display:block}
+
+html, body {
+	font:normal 14px/1.5 "Helvetica Neue",Freesans,Arial,sans-serif;
+	color:{color:Text} /* auto/default */;
+	background-color:{color:Background} /* #cedae2 */;
+}
+
+h1, h2, h3 {
+	font-family:"Lucida Grande","Trebuchet MS",Freesans,Arial,sans-serif;
+	text-rendering:optimizeLegibility
+}
+h1 {
+	font-size:3em;
+	line-height:1em;
+	margin-bottom:1em;
+	letter-spacing:-1px
+}
+h2 {
+	font-size:2em;
+	line-height:1.25em;
+	margin:0 0 0.75em
+}
+h3, .searchresults {
+	font-size:1.5em;
+	line-height:1em;
+	margin:0 auto 1em;
+	font-weight:normal
+}
+p, th, td {
+	line-height:1.5em;
+	margin-bottom:1.5em
+}
+table {
+	border-collapse:collapse;
+	margin-bottom:1.5em;
+	text-align:center;
+	max-width:100%
+}
+table tr:nth-child(odd) {background-color:#eee}
+th {background-color:#ddd}
+td, th {min-width:48px}
+code {font-size: 0.86em} /*Work out code styles*/
+
+a:link, a:visited {
+	color:{color:Link Color} /* #111 */;
+	text-decoration:none;
+	border-bottom:1px dotted #999;
+	word-wrap:break-word
+}
+a:hover, a:active, a:focus {
+	background-color:#111;
+	background:rgba(0,0,0,0.9);
+	color:#fff;
+	opacity:1
+}
+
+/* Pagewrapping container */
+.wrapfull {
+	position:relative;
+	width:740px;
+	margin:2em auto;
+	padding:3em 3em 1em;
+	border:1px solid #bbb;
+	background:#fff;
+	-moz-box-shadow:0 0 0.2em rgba(0,0,0,0.2);
+	-webkit-box-shadow:0 0 0.2em rgba(0,0,0,0.2);
+	-o-box-shadow:0 0 0.2em rgba(0,0,0,0.2);
+	box-shadow:0 0 0.2em rgba(0,0,0,0.2);
+	overflow:visible
+}
+/* Wraps posts */
+.wrapprimary {
+	float:left;
+	display:block;
+	width:520px;
+	height:auto
+}
+/* Wraps Secondary column/aside */
+.wrapsecondary {
+	float:right;
+	display:block;
+	width:170px;
+	height:auto;
+	font-size:0.86em;
+	line-height:1.75em
+}
+
+/* Search Results */
+.searchresults {
+	color: {color:Secondary Links} /* #71a75d */;
+}
+.search_query:before, .search_query:after {
+	content:'"';
+	color: #999
+}
+
+
+/* Horrizontal List Style */
+.horrizontal, .horrizontal li {display:inline}
+
+/* Post Styles */
+.post, .notes  {margin-bottom:3em}
+
+blockquote {border-left:3px solid #ccc}
+
+blockquote, dd, .postbody ul, .postbody ol {
+	margin:0 0 1.5em 1.43em;
+	padding:0 1.43em
+}
+
+li ul, li ol {
+	margin:0 1.43em 0 !important;
+}
+
+.postbody > ul {list-style-type:square}
+
+li ol, .postbody > ol, .notes li {list-style-type:decimal}
+
+.postbody > ul p, .postbody > ol p {margin-bottom:0}
+
+/* Post Details */
+.postfooter {
+	display:block !important;
+	font-size:0.71em;
+	line-height: 2.8em;
+	color:#777;
+	border-bottom:1px solid #ddd;
+	overflow:hidden
+}
+
+.postfooter a {color: {color:Secondary Links} /* #71a75d */}
+.postfooter span, .posttags {
+	border-left:1px solid #ddd;
+	padding:1em;
+	display:inline
+}
+.postfooter span:first-child {border:none;padding-left:0}
+
+.tag {margin-right:2px}
+.tag a:before, .searchresults .tag:before {content:"#"}
+.tag:after {content:","}
+.tag:last-child:after, .searchresults .tag:after {content:"" !important}
+
+/* Post Type Specific Styles */
+/* Media Post */
+img,embed,object,video {
+	display:block;
+	max-width:100%
+}
+.frame {
+	display:block;
+	width:500px;
+	/* margin-bottom:1em; */
+	padding:8px;
+	border:1px solid #ccc;
+	background-color:#fff;
+	-moz-box-shadow: 0 0 0.2em rgba(205,205,200,0.3);
+	-webkit-box-shadow: 0 0 0.2em rgba(205,205,200,0.3);
+	-o-box-shadow: 0 0 0.2em rgba(205,205,200,0.3);
+	box-shadow:0 0 0.2em rgba(205,205,200,0.3);
+	}
+
+.frame, .audio_player, .chatlist {margin-bottom:1em}
+
+/* Chat Post */
+.chatlist li {
+	padding:0.5em 1em;
+	font:normal 0.86em/1.5em Courier,monospace,sans-serif;
+	color:#3a5371
+}
+.chatlist .odd {background-color:#ecf1f6}
+.chatlist span:after {content:" - ";color:#888}
+
+/* Quote Post */
+blockquote.small p {
+	font-size:2em;
+	line-height:1.5em;
+	margin-bottom:0.75em
+}
+blockquote.medium p {
+	font-size:1.43em;
+	line-height:1.05em;
+	margin-bottom:1.05em
+}
+/*blockquote.long = default p styling*/
+.source:before {
+	content:"-";
+	color:#888;
+	margin:0.5em
+}
+
+/* Answer Post */
+.question {
+	position:relative;
+	padding:1em;
+	overflow:visible;
+	background-color:#fff6cd
+}
+.question p {margin-bottom:0}
+.asker, .asker img {display:inline;margin-right:5px}
+.questionpoint {
+	position:absolute;
+	width:1.5em;
+	height:0.5em;
+	bottom:-1.5em;
+	left:0.6em;
+	border-right:1.5em solid #fff6cd;
+	border-bottom:1.5em solid transparent;
+	overflow:hidden
+}
+.reply {margin:1.5em 1em 0}
+
+
+/*Notes*/
+.notes {
+	position:relative;
+	left:1em;
+	line-height:2em;
+	list-style-position:outside;
+	text-align:right /*aligns ol numbers right */
+}
+.notes blockquote {margin:0;padding:0 0 0 1em}
+.notes p {margin-bottom:1em}
+.notes h3, .note {text-align:left}
+.note a, .note a img {display:inline;border:none}
+.avatar {margin-bottom: -0.4em}
+
+/* Aside/Secondary Column */
+aside section, aside nav {
+	margin-bottom:2em;
+	padding-bottom:1em;
+	overflow:visible;
+	border-bottom:2px solid #ddd
+}
+aside h3 {margin-bottom:0.5em}
+
+.profilepic {display:block;float:left;width:64px;height:64px;margin-right:1em;padding:4px}
+
+#search {
+	margin:0 auto 1em;
+	display:block;
+	background-color:#fff;
+	overflow:auto;
+	border:1px solid #ddd
+}
+.search {
+	display:block;
+	margin:0 !important;
+	padding:6px 4px;
+	line-height:1em;
+	-webkit-appearance:none;
+	-webkit-higlight:none;
+	overflow:hidden;
+	-moz-appearance:none;
+	border:none;
+	background-color:transparent;
+	font:normal 12px/1em sans-serif;
+}
+#searchbox {
+	float:left;
+	width:106px !important
+}
+#searchbutton {
+	width:52px;
+	float:right;
+	cursor:pointer;
+	border:1px solid #fff !important;
+	color:#eee;
+	background-color:{color:Secondary Links};
+	text-shadow:0px 1px 0px rgba(225,225,220,0.2), 0 -1px 0 rgba(105,105,100,0.4);
+	-moz-box-shadow:inset -1px -1px 0 rgba(105,105,100,0.4);
+	-webkit-box-shadow:inset -1px -1px 0 rgba(105,105,100,0.4);
+	-o-box-shadow:inset -1px -1px 0 rgba(105,105,100,0.4);
+	box-shadow:inset -1px -1px 0 rgba(105,105,100,0.4);
+}
+#searchbutton:hover, #searchbutton:active, #searchbutton:focus {background-color:#111;color:#fff}
+
+/* Links to pages */
+.pagelinks, .like_post {margin-bottom:1em}
+.pagelinks a {
+	border:none;
+	display:block;
+	padding:0.2em;
+	border-bottom:1px solid #ddd
+}
+/* Followers */
+.follows {
+	position:relative;
+	float:left;
+	width:24px;
+	height:24px;
+	background-color:#ccc;
+	border:2px solid #ddd !important;
+	overflow:hidden;
+	margin:2px;
+	opacity:0.8
+}
+
+/* Twitter Feed Styling */
+#twitter, #twitter a {color:#186487}
+#twitter a:active, #twitter a:hover, #twitter a:focus {
+	border-style:solid;
+	border-color:#186487;
+	background:none
+} 
+#twitter li {
+	display:block;
+	margin-bottom:1em
+}
+
+/*Footer Navigation*/
+.pagejumps li a, .pagejumps li span {
+	float:left;
+	display:block;
+	width:2em;
+	height:auto;
+	margin-right:1px;
+	line-height:2em;
+	border-bottom:none;
+	text-align:center;
+	background-color:#ddd;
+	color:#fff;
+	-moz-transition:all .2s  linear;
+	-webkit-transition:all .2s  linear;
+	-o-transition:all .2s  linear;
+	transition:all .2s  linear
+}
+/* Gives the progressive grey gradient blocks */
+.pagejumps li:nth-child(1) a {background:rgba(0,0,0,0.9)}
+.pagejumps li:nth-child(2) a {background:rgba(0,0,0,0.8)}
+.pagejumps li:nth-child(3) a {background:rgba(0,0,0,0.6)}
+.pagejumps li:nth-child(4) a {background:rgba(0,0,0,0.4)}
+.pagejumps li:nth-child(5) a {background:rgba(0,0,0,0.2)}
+/* Current Page */
+.pagejumps li a:active, .pagejumps li a:hover, .pagejumps li a:focus {
+	text-decoration:underline;
+	background:rgb(70,70,70);
+	background:rgba(0,0,0,0.7)
+}
+.pagejumps li span {
+	text-decoration:underline;
+	background:none;color:#111
+}
+/* Page Number Display 1/... */
+.pagenums {
+	display:block;
+	color:#999;
+	text-align:right
+}
+
+/*  Next/Prev Arrows */
+.pagearrow {
+	padding:0.5em 0.8em;
+	border-width:1px;
+	border-style:solid !important;
+	border-color:#ddd #aaa #aaa #ddd !important;
+	font-size:13px;
+	margin-right:4px;
+	-moz-transition:all .2s  linear;
+	-webkit-transition:all .2s  linear;
+	-o-transition:all .2s  linear;
+	transition:all .2s  linear;
+	overflow:visible
+}
+.pagearrow:active, .pagearrow:hover, .pagearrow:focus {border-color:#000 !important}
+
+.footer {margin-bottom:3em}
+.footertext {
+	display:block;
+	width:780px;
+	margin:-1em auto 2em;
+	color:#444;
+	color:rgba(100,100,100,0.7)
+}
+
+.reduce, .small {
+	font-size:0.79em;
+	line-height:inherit;
+	color:#757575
+}
+/* CMYK Design Detail */
+.colorblocks {position:absolute;right:76px;}
+.colorblocks li {
+	float:left;
+	display:block;
+	width:2em;
+	height:2em;
+}
+.top {top:0;}
+.bottom {bottom:0 !important;}
+.pink {background-color:#FF00FF}
+.yellow {background-color: #fbf200}
+.blue {background-color: #2ab8ff}
+.black {background-color:#111}
+.grey {background-color: #ccc}
+
+/* Print Styles - makes posts full page width when printed and removes navigation elements */
+@media print{
+.footer, #pagenavigation, #notes, #generalnav, #search, #likes, #twitter, #tweets, .twitter-follow-button, #mylikes, #myfollows {display:none !important}
+.wrapfull, .wrapprimary, .post, #aboutme, .answerpoint, .wrapsecondary {
+	float:none;
+	display:block !important;
+	width:100%;
+	border:none;
+	background:transparent;
+	box-shadow:none;
+	margin:0 auto 2em;
+	padding:0
+}
+.question {border:1px dotted #ccc}
+a {color:#000 !important}
+.postbody a:after, .reblog a:after {content:"[" attr(href) "]";word-wrap:break-word}
+}
+
+{CustomCSS}
+</style>
+
+{block:IfGoogleAnalyticsID}
+<!--Analytics-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{text:Google Analytics ID}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!--Async Version. More info here http://code.google.com/apis/analytics/docs/tracking/asyncTracking.html-->
+{/block:IfGoogleAnalyticsID}
+</head>
+<body>
+	
+	<section id="sitewrapper" class="wrapfull">
+	
+	<header>
+		<h1><a href="/">{Title}</a></h1>
+	</header>
+		
+
+	<div id="posts" class="wrapprimary">
+			
+			{block:NoSearchResults}
+				<p class="searchresults">{lang:No search results for SearchQuery 2}</p>
+			{/block:NoSearchResults}
+			{block:SearchPage}
+				<p class="searchresults">{lang:Your search for SearchQuery returned SearchResultCount results 2}</p>
+			{/block:SearchPage}
+			{block:TagPage}
+				<p class="searchresults">{lang:Showing posts tagged Tag 2}</p>
+			{/block:TagPage}
+			
+			{block:DayPage}
+				<p class="searchresults">{ShortDayOfWeek} {DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</p>
+			{/block:DayPage}
+			
+	{block:Posts}	
+		<article class="post {PostType}">
+		
+				
+				{block:Text}
+					{block:Title}
+					<header><h2><a href="{Permalink}">{Title}</a></h2></header>
+					{/block:Title}
+					<section class="postbody">{Body}</section>
+				{/block:Text}
+				
+				
+				{block:Photo}
+                    {LinkOpenTag}<img class="frame" src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
+                    {block:Caption}
+                        <section class="postbody">{Caption}</section>  
+					{/block:Caption}
+            	{/block:Photo}
+            	
+            	
+            	{block:Photoset}
+                    <div class="frame">{Photoset-500}</div>
+                    {block:Caption}
+                        <section class="postbody">{Caption}</section>
+                    {/block:Caption}
+                    
+            	{/block:Photoset}
+
+				
+				{block:Link}
+					<header><h2><a href="{URL}" class="link" {Target}>{Name}</a></h2></header>
+					{block:Description}
+						<section class="postbody">{Description}</section>
+					{block:Description}
+				{/block:Link}
+				
+				
+				{block:Chat}
+					{block:Title}
+					<header><h2><a href="{Permalink}">{Title}</a></h2></header>
+					{/block:Title}
+					
+					<ul class="chatlist">
+						{block:Lines}
+						<li class="{Alt} user_{UserNumber}">{block:Label}<span class="label">{Label}</span>{block:Label} {Line}</li>
+						{/block:Lines}
+					</ul>
+				{/block:Chat}
+				
+				
+				{block:Video}
+					{block:Title}
+					<header><h2><a href="{Permalink}">{Title}</a></h2></header>
+					{/block:Title}
+					<div class="frame">
+					{Video-500}
+					</div>
+					{block:Caption}
+                    	<section class="postbody">{Caption}</section>
+                    {/block:Caption}
+				{/block:Video}
+				
+				
+				{block:Quote}
+					<blockquote class="{Length}"> 
+					{Quote}
+					</blockquote>
+					{block:Source}
+					<p class="reduce">
+					{Source}
+					</p>
+					{/block:Source}
+				{/block:Quote}
+				
+				
+				{block:Audio}
+	                {block:AudioEmbed}
+	                    {AudioEmbed}
+	                {/block:AudioEmbed}
+	                
+	                {block:AudioPlayer}    
+	                    {AudioPlayerBlack}
+	                {/block:AudioPlayer}
+                
+                	{block:Caption}
+                        <section class="postbody">{Caption}</section>
+                    {/block:Caption}
+            	{/block:Audio}
+
+
+            	{block:Answer}
+                    <section class="question">
+                    	<span class="asker"><img src="{AskerPortraitURL-24}" width="24" height="24" alt=""/>{Asker}</span>
+                    	<p>{Question}</p>
+					<span class="questionpoint"></span>
+                    </section><!--/.question-->
+					<section class="reply">
+						{Answer}
+					</section><!--/.reply-->
+            	{/block:Answer}
+            	
+            	
+            	{block:IfShowPhotoExifData}
+            	{block:PermalinkPage}
+						{block:Exif}
+						<section class="postbody">
+						<ul class="reduce">
+							{block:Camera}
+							<li>Camera: <strong>{Camera}</strong></li>
+							{/block:Camera}
+							
+							{block:Aperture}
+							<li>Aperture: <strong>{Aperture}</strong></li>
+							{/block:Aperture}
+							
+							{block:Exposure}
+							<li>Exposure: <strong>{Exposure}</strong></li>
+							{/block:Exposure}
+							
+							{block:FocalLength}
+							<li>Focal Length: <strong>{FocalLength}</strong></li>
+							{/block:FocalLength}
+						</ul>
+						</section>
+						{/block:Exif}
+				{/block:PermalinkPage}
+				{block:IfShowPhotoExifData}
+		
+		
+			<footer class="postfooter">
+			{block:Date}
+				<span>Posted: 
+				{block:IndexPage} 
+				<a href="{Permalink}">{TimeAgo}</a>
+				{/block:IndexPage}
+				{block:PermalinkPage}
+				{ShortDayOfWeek} {DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}
+				{/block:PermalinkPage}
+				</span>
+			{/block:Date}
+					
+			{block:RebloggedFrom}
+				<span class="reblog">{lang:Reblogged from ReblogParentName 2}</span>
+			{/block:RebloggedFrom}
+			
+			{block:Audio}
+				{block:PlayCount}<span class="plays">{PlayCountWithLabel}</span>{/block:PlayCount}
+			{/block:Audio}
+			
+			{block:NoteCount}
+				<span><a href="{Permalink}#notes">{NoteCountWithLabel}</a></span>
+			{/block:NoteCount}
+			
+			{block:HasTags}
+			<ul class="horrizontal posttags">
+				<li class="nocomma">Tags:</li>
+				{block:Tags}<li class="tag"><a href="{TagURL}" title="#{Tag}">{Tag}</a></li>{/block:Tags}
+			</ul>
+			{/block:HasTags}
+			
+			</footer>
+			<!--/.postfooter-->
+		
+			
+		</article>
+		<!--/.post-->
+		{/block:Posts}
+	
+	{block:PostNotes}
+	<section id="notes" class="notes reduce">
+		<h3>{lang:Notes}</h3>
+		{PostNotes}
+	</section>
+	{/block:PostNotes}
+	<!--END Notes-->
+	</div><!--/.wrapleft-->
+	
+	
+	<!--START Secondary Column-->
+	<aside id="extras" class="wrapsecondary clearfix">
+		
+		<section id="aboutme">
+		{block:Description}
+			{block:IfShowProfilePic}
+			<span class="profilepic frame"><img src="{PortraitURL-64}" alt="{Title}" /></span>
+			{/block:IfShowProfilePic}
+			<p>{Description}</p>
+		{/block:Description}
+		
+		</section><!--/#aboutme-->
+		
+		<!--SOCIAL MEDIA ICONS WOULD LOOK GOOD IN PLACE HERE-->	
+		
+		<nav id="generalnav">
+			<h3>{lang:Pages}</h3>
+			<ul class="pagelinks">
+				{block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+				{block:AskEnabled}<li><a href="/ask" title="Ask">{AskLabel}</a></li>{/block:AskEnabled}
+				{block:SubmissionsEnabled}<li><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+			</ul>
+			<!--Standard Tumblr Links-->
+			<p><a href="{RSS}" title="{lang:RSS}">{lang:RSS}</a> | <a href="/archive" title="{lang:Archive}">{lang:Archive}</a> | <a href="/random" title="{lang:Random}">{lang:Random}</a></p>
+		
+			<form id="search" action="/search" method="get">
+				<input type="search" id="searchbox" name="q" class="search" placeholder="Keywords" value="{SearchQuery}"/>
+				<input type="submit" id="searchbutton" class="search" value="Search"/>
+			</form>
+			
+			<div class="clearfix"></div>		
+		</nav><!--/#generalnav-->
+	
+
+				{block:Twitter}
+				<section>
+				<div id="twitter" class="clearfix" style="display:none;">
+					<h3><a href="http://twitter.com/{TwitterUsername}">Latest Tweets</a></h3>
+						<ul id="tweets"></ul> 
+					</div><!--/#twitter-->
+						<script type="text/javascript">
+						function recent_tweets(data) {
+						for (i=0; i<data.length; i++) {
+						document.getElementById("tweets").innerHTML = 
+						document.getElementById("tweets").innerHTML + 
+						'<li class="twitter_content"><a href="http://twitter.com/{TwitterUsername}/status/' + 
+						(data[i].id_str ? data[i].id_str : data[i].id) +
+						'">' + data[i].text + 
+						'</a></li>';
+						}
+						document.getElementById("twitter").style.display = 'block';
+						}
+						</script>
+
+					{block:IfShowTwitterFollowButton}
+					<a href="http://twitter.com/{TwitterUsername}" class="twitter-follow-button" data-show-count="">Follow {TwitterUsername}</a>
+					<!--Button info @ http://twitter.com/about/resources/followbutton -->
+					{block:IfShowTwitterFollowButton}
+				</section>
+				{/block:Twitter}
+
+
+		{block:Likes}
+		<section id="likes">
+		<h3><a href="http://www.tumblr.com/liked/by/{Name}">{lang:Likes}</a></h3>
+			<div id="mylikes" class="clearfix">{Likes limit="3" summarize="100" width="160"}</div>
+		</section>
+		{/block:Likes}
+		
+		{block:IndexPage} 
+			{block:Following}
+			<section id="myfollows" class="clearfix">
+			<h3>{lang:Following}</h3>
+				{block:Followed}<a class="follows" href="{FollowedURL}" title="{FollowedTitle}"><img src="{FollowedPortraitURL-24}" alt="{FollowedTitle}" /></a>{/block:Followed}
+			</section>
+			{/block:Following}
+		{/block:IndexPage}
+		
+		{block:PermalinkPage} 
+		<p>&uarr; <a href="#sitewrapper">back to top</a></p>
+		{/block:PermalinkPage}
+	</aside>
+	<!--END Secondary Column-->
+	
+	<div class="clearfix"></div>
+	
+
+		<nav class="footer clearfix">
+		{block:Pagination}
+			<div class="wrapprimary">
+			<ul class="horrizontal pagejumps">
+			{block:JumpPagination length="5"}
+				{block:JumpPage}<li><a href="{URL}">{PageNumber}</a></li>{/block:JumpPage}
+				{block:CurrentPage}<li><span>{PageNumber}</span></li>{/block:CurrentPage}
+			{/block:JumpPagination}
+			</ul>
+				<span class="pagenums">
+				{CurrentPage} / {TotalPages}
+				</span>
+			</div>
+					 
+			<span class="wrapsecondary">
+				{block:PreviousPage}<a class="pagearrow" href="{PreviousPage}">&larr; Prev</a>{/block:PreviousPage}
+				{block:NextPage}<a class="pagearrow" href="{NextPage}">Next &rarr;</a>{/block:NextPage}
+			</span>
+		{/block:Pagination}
+		</nav><!--/.footer-->
+
+					
+<!--Colour Blocks-->				
+<ul class="horrizontal colorblocks top">
+	<li class="yellow"></li>
+	<li class="pink"></li>
+	<li class="blue"></li>		
+	<li class="black"></li>
+	<li class="grey"></li>
+</ul>
+<!--Colour Blocks-->
+<ul class="horrizontal colorblocks bottom">
+	<li class="yellow"></li>
+	<li class="pink"></li>
+	<li class="blue"></li>		
+	<li class="black"></li>
+	<li class="grey"></li>
+</ul>
+</section><!--/.wrapfull-->
+	
+	<p class="footertext reduce">&copy; Copyright {Title} {CopyrightYears} | {lang:Powered by Tumblr 2} | Theme by <a href="http://paulfosterdesign.tumblr.com" target="_blank">paulfosterdesign</a></p>
+	
+{block:Twitter}
+    <script type="text/javascript" src="/tweets.js"></script> 
+{/block:Twitter}
+{block:IfShowTwitterFollowButton}
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+{/block:IfShowTwitterFollowButton}
+</body>
+</html>
