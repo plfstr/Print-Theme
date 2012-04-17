@@ -19,6 +19,7 @@
 <meta name="color:Secondary Links" content="#71a75d"/>
 <meta name="if:Show Profile Pic" content="1"/>
 <meta name="if:Show Twitter Follow Button" content="0"/>
+<meta name="if:Show Photo Exif Data" content="0"/>
 <meta name="text:Google Analytics ID" content="0"/>
 
 <style type="text/css">
@@ -123,9 +124,9 @@ a:link, a:visited {
 	word-wrap:break-word
 }
 a:hover, a:active, a:focus {
+	color:#fff;
 	background-color:#111;
 	background:rgba(0,0,0,0.9);
-	color:#fff;
 	opacity:1
 }
 
@@ -772,9 +773,9 @@ a {color:#000 !important}
 
 
 		{block:Likes}
-		<section id="likes">
+		<section id="mylikes" class="clearfix">
 		<h3><a href="http://www.tumblr.com/liked/by/{Name}">{lang:Likes}</a></h3>
-			<div id="mylikes" class="clearfix">{Likes limit="3" summarize="100" width="160"}</div>
+			{Likes limit="3" summarize="100" width="160"}
 		</section>
 		{/block:Likes}
 		
