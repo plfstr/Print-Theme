@@ -228,6 +228,7 @@ img,embed,object,video {
 	width:500px;
 	/* margin-bottom:1em; */
 	padding:8px;
+	line-height:0; /*stop whitespace below*/
 	border:1px solid #ccc;
 	background-color:#fff;
 	-moz-box-shadow: 0 0 0.2em rgba(205,205,200,0.3);
@@ -408,7 +409,7 @@ aside h3 {margin-bottom:0.5em}
 .pagejumps li:nth-child(4) a {background:rgba(0,0,0,0.4)}
 .pagejumps li:nth-child(5) a {background:rgba(0,0,0,0.2)}
 /* Current Page */
-.pagejumps li a:active, .pagejumps li a:hover, .pagejumps li a:focus {
+.pagejumps a:active, .pagejumps a:hover, .pagejumps a:focus {
 	text-decoration:underline;
 	background:rgb(70,70,70);
 	background:rgba(0,0,0,0.7)
@@ -677,6 +678,21 @@ a {color:#000 !important}
 				<span class="reblog">{lang:Reblogged from ReblogParentName 2}</span>
 			{/block:RebloggedFrom}
 			
+			{block:NotReblog}
+				{block:ContentSource}
+				<span class="source">
+				{lang:Source}: <a href="{SourceURL}">
+				{block:SourceLogo}
+					{SourceTitle}
+				{/block:SourceLogo}
+				{block:NoSourceLogo}
+					{SourceTitle}
+				{/block:NoSourceLogo}
+				</a>
+				</span>
+				{/block:ContentSource}
+			{/block:NotReblog}
+			
 			{block:Audio}
 				{block:PlayCount}<span class="plays">{PlayCountWithLabel}</span>{/block:PlayCount}
 			{/block:Audio}
@@ -713,7 +729,7 @@ a {color:#000 !important}
 	<!--START Secondary Column-->
 	<aside id="extras" class="wrapsecondary clearfix">
 		
-		<section id="aboutme">
+		<section id="aboutme" class="clearfix">
 		{block:Description}
 			{block:IfShowProfilePic}
 			<span class="profilepic frame"><img src="{PortraitURL-64}" alt="{Title}" /></span>
