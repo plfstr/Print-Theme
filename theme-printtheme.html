@@ -226,9 +226,8 @@ img,embed,object,video {
 .frame {
 	display:block;
 	width:500px;
-	/* margin-bottom:1em; */
 	padding:8px;
-	line-height:0; /*stop whitespace below*/
+	line-height:0;
 	border:1px solid #ccc;
 	background-color:#fff;
 	-moz-box-shadow: 0 0 0.2em rgba(205,205,200,0.3);
@@ -474,6 +473,8 @@ aside h3 {margin-bottom:0.5em}
 .black {background-color:#111}
 .grey {background-color: #ccc}
 
+{CustomCSS}
+
 /* Print Styles - makes posts full page width when printed and removes navigation elements */
 @media print{
 .footer, #pagenavigation, #notes, #generalnav, #search, #likes, #twitter, #tweets, .twitter-follow-button, #mylikes, #myfollows {display:none !important}
@@ -491,8 +492,6 @@ aside h3 {margin-bottom:0.5em}
 a {color:#000 !important}
 .postbody a:after, .reblog a:after {content:"[" attr(href) "]";word-wrap:break-word}
 }
-
-{CustomCSS}
 </style>
 
 {block:IfGoogleAnalyticsID}
@@ -683,7 +682,7 @@ a {color:#000 !important}
 			
 			{block:NotReblog}
 				{block:ContentSource}
-				<span class="source">
+				<span class="postsource">
 				{lang:Source}: <a href="{SourceURL}">
 				{block:SourceLogo}
 					{SourceTitle}
@@ -714,7 +713,6 @@ a {color:#000 !important}
 			</footer>
 			<!--/.postfooter-->
 		
-			
 		</article>
 		<!--/.post-->
 		{/block:Posts}
@@ -754,7 +752,7 @@ a {color:#000 !important}
 			<!--Standard Tumblr Links-->
 			<p><a href="{RSS}" title="{lang:RSS}">{lang:RSS}</a> | <a href="/archive" title="{lang:Archive}">{lang:Archive}</a> | <a href="/random" title="{lang:Random}">{lang:Random}</a></p>
 		
-			<form id="search" action="/search" method="get">
+			<form id="search" class="clearfix" action="/search" method="get">
 				<input type="search" id="searchbox" name="q" class="search" placeholder="Keywords" value="{SearchQuery}"/>
 				<input type="submit" id="searchbutton" class="search" value="Search"/>
 			</form>
