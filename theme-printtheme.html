@@ -225,6 +225,11 @@ img,embed,object,video {
 	display:block;
 	max-width:100%
 }
+img {
+	height:auto;
+	-ms-interpolation-mode:bicubic
+	}
+
 .frame {
 	display:block;
 	width:500px;
@@ -519,7 +524,7 @@ a {color:#000 !important}
 	
 	<section id="sitewrapper" class="wrapfull">
 	
-	<header>
+	<header role="banner">
 		<h1><a href="/">{Title}</a></h1>
 	</header>
 		
@@ -541,7 +546,7 @@ a {color:#000 !important}
 			{/block:DayPage}
 			
 	{block:Posts}	
-		<article class="post {PostType}" role="content">
+		<article class="post {PostType}" role="main">
 		
 				
 				{block:Text}
@@ -669,7 +674,7 @@ a {color:#000 !important}
 				{block:IfShowPhotoExifData}
 		
 		
-			<footer class="postfooter">
+			<footer class="postfooter" role="contentinfo">
 			{block:Date}
 				<span>Posted: 
 				{block:IndexPage} 
@@ -745,7 +750,7 @@ a {color:#000 !important}
 		
 		</section><!--/#aboutme-->
 		
-		<!--SOCIAL MEDIA ICONS WOULD LOOK GOOD IN PLACE HERE-->	
+		<!--SOCIAL MEDIA ICONS WOULD LOOK GOOD IN PLACE HERE-->
 		
 		<nav id="generalnav" class="clearfix" role="navigation">
 			<h3>{lang:Pages}</h3>
@@ -857,7 +862,7 @@ a {color:#000 !important}
 </ul>
 </section><!--/.wrapfull-->
 	
-	<p class="footertext reduce">&copy; Copyright {Title} {CopyrightYears} | {lang:Powered by Tumblr 2} | Theme by <a href="http://paulfosterdesign.tumblr.com" target="_blank">paulfosterdesign</a></p>
+	<p class="footertext reduce" role="contentinfo">&copy; Copyright {Title} {CopyrightYears} | {lang:Powered by Tumblr 2} | Theme by <a href="http://paulfosterdesign.tumblr.com" target="_blank">paulfosterdesign</a></p>
 	
 {block:Twitter}
     <script type="text/javascript" src="/tweets.js"></script> 
