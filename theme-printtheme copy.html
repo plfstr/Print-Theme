@@ -45,7 +45,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 body {
 	line-height: 1;
-	text-align: start
 }
 
 ol, ul {
@@ -134,7 +133,7 @@ a:hover, a:active, a:focus {
 /* Pagewrapping container */
 .wrapfull {
 	position:relative;
-	width:816px;
+	width:740px;
 	margin:2em auto;
 	padding:3em 3em 1em;
 	border:1px solid #bbb;
@@ -156,7 +155,7 @@ a:hover, a:active, a:focus {
 .wrapsecondary {
 	float:right;
 	display:block;
-	width:250px;
+	width:170px;
 	height:auto;
 	font-size:0.86em;
 	line-height:1.75em
@@ -176,7 +175,7 @@ a:hover, a:active, a:focus {
 .horrizontal, .horrizontal li {display:inline}
 
 /* Post Styles */
-.post, .notes  {margin-bottom:4em}
+.post, .notes  {margin-bottom:3em}
 
 blockquote {border-left:3px solid #ccc}
 
@@ -295,8 +294,6 @@ blockquote.medium p {
 }
 .reply {margin:1.5em 1em 0}
 
-/*Reblogs*/
-.post h1 {font-size:2em;line-height:1.25em;margin:0 0 0.75em} /*Tames reblogs*/
 
 /*Notes*/
 .notes {
@@ -309,11 +306,9 @@ blockquote.medium p {
 .notes blockquote {margin:0;padding:0 0 0 1em}
 .notes p {margin-bottom:1em}
 .notes h3, .note {text-align:left}
-.note {border-bottom:1px solid #eee}
-.note:last-child {border:none}
 .note a, .note a img {display:inline;border:none}
 .avatar {margin-bottom: -0.4em}
-.more_notes_link_container {list-style-type:none !important}
+.more_notes_link_container {list-style-type:none !important} /*remove number from more notes link*/
 
 /* Aside/Secondary Column */
 aside section, aside nav {
@@ -324,14 +319,7 @@ aside section, aside nav {
 }
 aside h3 {margin-bottom:0.5em}
 
-.profilepic {
-	display:block;
-	float:left;
-	width:64px;
-	height:64px;
-	margin-right:1em;
-	margin-bottom:0;
-	padding:4px}
+.profilepic {display:block;float:left;width:64px;height:64px;margin-right:1em;padding:4px}
 
 .search {
 	display:block;
@@ -380,8 +368,6 @@ aside h3 {margin-bottom:0.5em}
 }
 
 /* Likes */
-.post_info_bottom {display:block !important;margin-bottom:7px;}
-.post_info_bottom, .post_info_bottom a {color:#777 !important}
 .like_post {border-bottom:1px solid #ccc}
 .like_post:last-child {border:none}
 .like_audio iframe {max-width:100%;height:auto !important}
@@ -395,7 +381,7 @@ aside h3 {margin-bottom:0.5em}
 	background-color:#ccc;
 	border:2px solid #ddd !important;
 	overflow:hidden;
-	margin:3px;
+	margin:2px;
 	opacity:0.8
 }
 
@@ -483,7 +469,7 @@ aside h3 {margin-bottom:0.5em}
 	color:#757575
 }
 /* CMYK Design Detail */
-.colorblocks {position:absolute;right:64px}
+.colorblocks {position:absolute;right:76px;}
 .colorblocks li {
 	float:left;
 	display:block;
@@ -496,7 +482,7 @@ aside h3 {margin-bottom:0.5em}
 .yellow {background-color: #fbf200}
 .blue {background-color: #2ab8ff}
 .black {background-color:#111}
-.grey {background-color: #bbb}
+.grey {background-color: #ccc}
 
 {CustomCSS}
 
@@ -552,7 +538,7 @@ a {color:#000 !important}
 	</header>
 		
 
-	<main id="posts" class="wrapprimary" role="main">
+	<div id="posts" class="wrapprimary">
 			
 			{block:NoSearchResults}
 				<p class="searchresults">{lang:No search results for SearchQuery 2}</p>
@@ -569,7 +555,7 @@ a {color:#000 !important}
 			{/block:DayPage}
 			
 	{block:Posts}	
-		<article class="post {PostType}">
+		<article class="post {PostType}" role="main">
 		
 				
 				{block:Text}
@@ -757,7 +743,7 @@ a {color:#000 !important}
 	</section>
 	{/block:PostNotes}
 	<!--END Notes-->
-	</main><!--/.wrapleft-->
+	</div><!--/.wrapleft-->
 	
 	
 	<!--START Secondary Column-->
