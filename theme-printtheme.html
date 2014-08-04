@@ -111,10 +111,11 @@ h4{
 	margin-right: 0.2em;
 	font-weight:normal	
 }
-p, th, td {
+p, figcaption, th, td {
 	line-height:1.5em;
 	margin-bottom:1.5em
 }
+figure {margin:0}
 table {
 	border-collapse:collapse;
 	margin-bottom:1.5em;
@@ -138,7 +139,6 @@ a:hover, a:active, a:focus {
 	opacity:1
 }
 
-figure {margin:0}
 
 /* Pagewrapping container */
 .wrapfull {
@@ -260,19 +260,19 @@ img {
 .chatlist span:after {content:" - ";color:#888}
 
 /* Quote Post */
-blockquote.small p {
+blockquote.short {
 	font-size:2em;
-	line-height:1.5em;
+	line-height:0.75em;
 	margin-bottom:0.75em
 }
-blockquote.medium p {
+blockquote.medium {
 	font-size:1.43em;
 	line-height:1.05em;
 	margin-bottom:1.05em
 }
 /*blockquote.long = default p styling*/
 .source:before {
-	content:"-";
+	content:"\2014";
 	color:#888;
 	margin:0.5em
 }
@@ -654,10 +654,8 @@ a {color:#000 !important}
 					{Quote}
 					</blockquote>
 						{block:Source}
-						<figcaption>
-							<p class="reduce">
+						<figcaption class="reduce">
 							{Source}
-							</p>
 						</figcaption>
 						{/block:Source}
 					</figure>
