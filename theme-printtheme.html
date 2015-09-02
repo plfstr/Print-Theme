@@ -8,9 +8,8 @@
 {block:Description}<meta name="description" content="{MetaDescription}"/>{/block:Description}
 <link rel="icon" href="{Favicon}"/>
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
-<!--http://code.google.com/p/html5shiv/-->
 <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
 <![endif]-->
 
 <!-- Tumblr Theme Variables -->
@@ -745,6 +744,12 @@ a {color:#000 !important}
 				</span>
 				{/block:ContentSource}
 			{/block:NotReblog}
+			
+			{block:Link}
+				{block:Host}
+				    <span class="posthost">{Host}</span>
+				{/block:Host}
+			{/block:Link}
 			
 			{block:Audio}
 				{block:PlayCount}<span class="plays">{PlayCountWithLabel}</span>{/block:PlayCount}
