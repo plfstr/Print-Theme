@@ -75,7 +75,7 @@ q:before, q:after {
     visibility: hidden;
 }
 
-main, article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display:block}
+main, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block}
 
 html, body {
 	font:normal 14px/1.5 "Helvetica Neue",Freesans,Arial,sans-serif;
@@ -86,7 +86,6 @@ html, body {
 h1, h2, h3 {
 	font-family:{TitleFont},"Lucida Grande","Trebuchet MS",Freesans,Arial,sans-serif;
 	font-weight: {TitleFontWeight};
-	text-rendering:optimizeLegibility
 }
 h1 {
 	font-size:3em;
@@ -533,14 +532,6 @@ a {color:#000 !important}
 }
 </style>
 
-<!--[if lte IE 7]>
-.wrapfull {overflow:auto}
-.postfooter span, .posttags {float:left;padding:0 7px}
-.postfooter span, .posttags, .posttags li {display:inline !important}
-.tag {margin-right:7px}
-#search {float:left;width:100%}
-<![endif]-->
-
 {block:IfGoogleAnalyticsID}
 <!--Analytics-->
 <script type="text/javascript">
@@ -821,7 +812,7 @@ a {color:#000 !important}
 				{block:Twitter}
 				<section>
 				<div id="twitter" class="clearfix" style="display:none;">
-					<h3><a href="http://twitter.com/{TwitterUsername}">Latest Tweets</a></h3>
+					<h3><a href="https://twitter.com/{TwitterUsername}">Latest Tweets</a></h3>
 						<ul id="tweets"></ul> 
 					</div><!--/#twitter-->
 						<script type="text/javascript">
@@ -829,7 +820,7 @@ a {color:#000 !important}
 						for (i=0; i<5; i++) {
 						document.getElementById("tweets").innerHTML = 
 						document.getElementById("tweets").innerHTML + 
-						'<li class="twitter_content"><a href="http://twitter.com/{TwitterUsername}/status/' + 
+						'<li class="twitter_content"><a href="https://twitter.com/{TwitterUsername}/status/' + 
 						(data[i].id_str ? data[i].id_str : data[i].id) +
 						'">' + data[i].text + 
 						'</a></li>';
@@ -839,8 +830,8 @@ a {color:#000 !important}
 						</script>
 
 					{block:IfShowTwitterFollowButton}
-					<a href="http://twitter.com/{TwitterUsername}" class="twitter-follow-button" data-show-count="">Follow {TwitterUsername}</a>
-					<!--Button info @ http://twitter.com/about/resources/followbutton -->
+					<a href="https://twitter.com/{TwitterUsername}" class="twitter-follow-button" data-show-count="">Follow {TwitterUsername}</a>
+					<!--Button info @ https://dev.twitter.com/web/follow-button -->
 					{block:IfShowTwitterFollowButton}
 				</section>
 				{/block:Twitter}
@@ -904,7 +895,7 @@ a {color:#000 !important}
     <script type="text/javascript" src="/tweets.js" defer></script>
 {/block:Twitter}
 {block:IfShowTwitterFollowButton}
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js" defer></script>
+    <script type="text/javascript" src="https://platform.twitter.com/widgets.js" defer></script>
 {/block:IfShowTwitterFollowButton}
 </body>
 </html>
