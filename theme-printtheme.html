@@ -810,29 +810,17 @@ a {color:#000 !important}
 	
 
 				{block:Twitter}
-				<section>
-				<div id="twitter" class="clearfix" style="display:none;">
-					<h3><a href="https://twitter.com/{TwitterUsername}">Latest Tweets</a></h3>
-						<ul id="tweets"></ul> 
-					</div><!--/#twitter-->
-						<script type="text/javascript">
-						function recent_tweets(data) {
-						for (i=0; i<5; i++) {
-						document.getElementById("tweets").innerHTML = 
-						document.getElementById("tweets").innerHTML + 
-						'<li class="twitter_content"><a href="https://twitter.com/{TwitterUsername}/status/' + 
-						(data[i].id_str ? data[i].id_str : data[i].id) +
-						'">' + data[i].text + 
-						'</a></li>';
-						}
-						document.getElementById("twitter").style.display = 'block';
-						}
-						</script>
-
-					{block:IfShowTwitterFollowButton}
-					<a href="https://twitter.com/{TwitterUsername}" class="twitter-follow-button" data-show-count="">Follow {TwitterUsername}</a>
-					<!--Button info @ https://dev.twitter.com/web/follow-button -->
-					{block:IfShowTwitterFollowButton}
+				<section class="clearfix" role="presentation">
+					<a class="twitter-timeline" href="https://twitter.com/{TwitterUsername}" height="400" data-widget-id="" data-screen-name="{TwitterUsername}" data-show-replies="false" data-chrome="nofooter noborders" data-link-color="{color:Secondary Links}">Tweets by {TwitterUsername}</a>
+					<script>
+					window.twttr = (function (d, s, id) {
+					  var t, js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id; js.src= "https://platform.twitter.com/widgets.js";
+					  fjs.parentNode.insertBefore(js, fjs);
+					  return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+					}(document, "script", "twitter-wjs"));
+					</script>
 				</section>
 				{/block:Twitter}
 
@@ -891,11 +879,5 @@ a {color:#000 !important}
 	
 	<p class="footertext reduce" role="contentinfo">&copy;Copyright {Title} {CopyrightYears} | {lang:Powered by Tumblr 2} | Theme by <a href="http://paulfosterdesign.tumblr.com" target="_blank">paulfosterdesign</a></p>
 	
-{block:Twitter}
-    <script type="text/javascript" src="/tweets.js" defer></script>
-{/block:Twitter}
-{block:IfShowTwitterFollowButton}
-    <script type="text/javascript" src="https://platform.twitter.com/widgets.js" defer></script>
-{/block:IfShowTwitterFollowButton}
 </body>
 </html>
