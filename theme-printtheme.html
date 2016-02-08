@@ -75,6 +75,15 @@ q:before, q:after {
     visibility: hidden;
 }
 
+.invisible, 
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
 main, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block}
 
 html, body {
@@ -803,6 +812,7 @@ a {color:#000 !important}
 			<p><a href="{RSS}" title="{lang:RSS}">{lang:RSS}</a> | <a href="/archive" title="{lang:Archive}">{lang:Archive}</a> | <a href="/random" title="{lang:Random}">{lang:Random}</a></p>
 		
 			<form id="search" class="clearfix" action="/search" method="get" role="search">
+				<label for="searchbox" class="invisible">Search</label>
 				<input type="search" id="searchbox" name="q" class="search" placeholder="Keywords" value="{SearchQuery}"/>
 				<input type="submit" id="searchbutton" class="search" value="Search"/>
 			</form>
